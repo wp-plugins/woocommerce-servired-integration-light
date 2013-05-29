@@ -14,7 +14,8 @@ Integración para Woocommerce del sistema de pago por tarjeta Servired.
 
 Añada pago por tarjeta de crédito con Servired a Woocommerce.
 Permita a sus usuarios pagar con Martercard y Visa.
-La versión 'light' actualiza las notas de pedido con el resultado del pago. Use la versión 'pro' para actualizar además el estado del pedido de forma automática.
+<p>La versión 'light' actualiza las notas de pedido con el resultado del pago.</p>
+<p>Use la <a href="http://plugintpv.com/plugins/servired-integracion-woocommerce/">versión PRO</a> para actualizar además el estado del pedido de forma automática.</p>
 
 Web oficial: [plugintpv](http://plugintpv.com/plugins/servired-woocommerce-integration-light/)
 
