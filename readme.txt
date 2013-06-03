@@ -4,7 +4,7 @@ Donate link: http://www.plugintpv.com/
 Tags: woocommerce, servired, credit card, martercard, visa
 Requires at least: 3.2
 Tested up to: 3.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,7 +23,7 @@ Web oficial: [plugintpv](http://plugintpv.com/plugins/servired-woocommerce-integ
 
 Puede instalarlo automáticamente desde Wordpress, o manualmente:
 
-1. Descomprima el archivo, y copie la carpeta 'woocommerce-servired-light' en su carpeta de plugins del servidor (/wp-content/plugins/).
+1. Descomprima el archivo, y copie la carpeta 'woocommerce-servired-integration-light' en su carpeta de plugins del servidor (/wp-content/plugins/).
 1. Active el plugin desde el menú de Plugins.
 
 == Preguntas frecuentes (FAQs) ==
@@ -44,6 +44,9 @@ En la pestaña de "Pasarelas de Pago"
 
 
 == Changelog ==
+
+= 1.1.0 = 
+* Corregido fallo nombre de plugin. No cargaba logotipo correctamente.
 
 = 1.0.0 =
 * Versión inicial.

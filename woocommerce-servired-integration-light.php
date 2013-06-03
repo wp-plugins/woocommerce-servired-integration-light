@@ -25,11 +25,11 @@
  * Description: Pago por tarjeta servired para Woocommerce. Versión Light.
  * Author: PluginTPV
  * Author URI: http://www.plugintpv.com
- * Version: 1.0.0
+ * Version: 1.1.0
  */
 
 if ( !defined( 'WOOCOMMERCE_SERVIRED_LIGHT_URL' ) ) {
-	define( 'WOOCOMMERCE_SERVIRED_LIGHT_URL', WP_PLUGIN_URL . '/woocommerce-servired-light' );
+	define( 'WOOCOMMERCE_SERVIRED_LIGHT_URL', WP_PLUGIN_URL . '/woocommerce-servired-integration-light' );
 }
 
 add_action( 'plugins_loaded', 'woocommerce_gateway_servired_light_init' );
