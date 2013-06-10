@@ -25,21 +25,31 @@
  * Description: Pago por tarjeta servired para Woocommerce. Versión Light.
  * Author: PluginTPV
  * Author URI: http://www.plugintpv.com
- * Version: 1.1.0
+ * Version: 1.1.1
  */
 
 if ( !defined( 'WOOCOMMERCE_SERVIRED_LIGHT_URL' ) ) {
 	define( 'WOOCOMMERCE_SERVIRED_LIGHT_URL', WP_PLUGIN_URL . '/woocommerce-servired-integration-light' );
 }
 
+define( 'WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN', 'wooserviredlight' );
+
 add_action( 'plugins_loaded', 'woocommerce_gateway_servired_light_init' );
 
+add_action( 'init', 'miFuncion' );
+
+function miFuncion() {
+	load_plugin_textdomain( WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN, null, 'woocommerce-servired-integration-light/languages' );
+}
 
 function woocommerce_gateway_servired_light_init() {
-	include_once ('class-wc-gateway-servired-light.php');
 	
 	if ( !class_exists( 'WC_Payment_Gateway' ) ) return;
 
+	
+	include_once ('class-wc-gateway-servired-light.php');
+
+	
 	add_filter('woocommerce_payment_gateways', 'woocommerce_add_gateway_servired_light_gateway' );
 	
 	add_action( 'woocommerce_api_wc_gateway_servired_light', 'servired_light_ipn_response' );
@@ -60,14 +70,14 @@ function servired_light_ipn_response () {
 			exit;
 		}
 		
-		$order->add_order_note( sprintf( __( 'Servired pago completado, código %s', 'woocommerce' ), $datos['Ds_AuthorisationCode'] ) );
+		$order->add_order_note( sprintf( __( 'Servired order completed, code %s', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ), $datos['Ds_AuthorisationCode'] ) );
 	
 	} else {
 		// Order failed
 		$order_id = ( $datos['Ds_Order'] );
 		$order = new WC_Order( $order_id );
 		
-		$order->add_order_note( sprintf( __( 'Error de pago %s desde Servired.', 'woocommerce' ), $datos['Ds_ErrorCode'] ) );
+		$order->add_order_note( sprintf( __( 'Servired Payment ERROR, code %s', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ), $datos['Ds_ErrorCode'] ) );
 		
 	}
 	

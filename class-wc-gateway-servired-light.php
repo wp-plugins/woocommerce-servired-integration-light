@@ -32,7 +32,7 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 		$this->id				= 'servired_light';
 		$this->icon 			= apply_filters('woocommerce_servired_light_icon', WOOCOMMERCE_SERVIRED_LIGHT_URL . '/logo.gif');
 		$this->has_fields 		= false;
-		$this->method_title     = __( 'Servired Light', 'woocommerce' );
+		$this->method_title     = __( 'Servired Light', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN );
 
 		// Load the settings.
 		$this->init_form_fields();
@@ -72,66 +72,64 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 
 		$this->form_fields = array(
 				'enabled' => array(
-						'title' => __( 'Activar/Desactivar', 'woocommerce' ),
+						'title' => __( 'Enable/Disable', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'type' => 'checkbox',
-						'label' => __( 'Activar Servired Light', 'woocommerce' ),
+						'label' => __( 'Enable Servired Light', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'default' => 'yes'
 				),
 				'title' => array(
-						'title' => __( 'Título', 'woocommerce' ),
+						'title' => __( 'Title', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'type' => 'text',
-						'description' => __( 'Título que se muestra al usuario durante el proceso de pago.', 'woocommerce' ),
-						'default' => __( 'Servired Light', 'woocommerce' ),
+						'description' => __( 'This  title is showed in checkout process.', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
+						'default' => __( 'Servired Light', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'desc_tip'      => true,
 				),
 				'description' => array(
-						'title' => __( 'Descripción', 'woocommerce' ),
+						'title' => __( 'Description', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'type' => 'textarea',
-						'description' => __( 'Descripción del método de pago. Úselo para indicar al usuario que se trata de un sistema seguro, mediante entidad bancaria.', 'woocommerce' ),
-						'default' => __( 'Pago seguro mediante tarjeta de crédito. Se le redireccionará a la web segura de la entidad bancaria.', 'woocommerce' )
+						'description' => __( 'Description of the method of payment. Use it to tell the user that it is a secure system through bank.', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
+						'default' => __( 'Secure payment by credit card. You will be redirected to the secure website of the bank.', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN )
 				),
 				'titular' => array(
-						'title' => __( 'Titular', 'woocommerce' ),
+						'title' => __( 'Titular', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'type' => 'text',
 						'default' => ''
 				),
 				'merchantName' => array(
-						'title' => __( 'Nombre de comercio', 'woocommerce' ),
+						'title' => __( 'Trade name', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'type' => 'text',
 						'default' => ''
 				),
 				'commerce' => array(
-						'title' => __( 'Nº comercio', 'woocommerce' ),
+						'title' => __( 'Trade number', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'type' => 'text',
-						'description' => __( 'Número de comercio.', 'woocommerce' ),
 						'default' => ''
 				),
 				'terminal' => array(
-						'title' => __( 'Nº Terminal', 'woocommerce' ),
+						'title' => __( 'Terminal number', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'type' => 'text',
-						'description' => __( 'Número de Terminal.', 'woocommerce' ),
 						'default' => '1'
 				),
 				'key' => array(
-						'title' => __( 'Clave secreta', 'woocommerce' ),
+						'title' => __( 'Secret key', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'type' => 'text',
-						'description' => 'Clave secreta de encriptación.',
+						'description' => __('Encryptation Secret Key.', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'default' => ''
 				),
 				'signature' => array(
-						'title' => __( 'Sort Code', 'woocommerce' ),
+						'title' => __( 'Sort Code', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'type'	=> 'select',
 						'options' => array(
-								'completa' => __( 'Completa', 'woocommerce' ),
-								'ampliada' => __( 'SHA1 - Completa Extendida', 'woocommerce' )
+								'completa' => __( 'Complet', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
+								'ampliada' => __( 'SHA1 - Complet Extended', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN )
 						),
 						'description' => '',
 						'default' => 'ampliada'
 				),
 				'test' => array(
-						'title' => __( 'Modo Test', 'woocommerce' ),
+						'title' => __( 'Test Mode', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'type' => 'checkbox',
-						'label' => __( 'Activar Servired en modo test.', 'woocommerce' ),
+						'label' => __( 'Enable Servired test mode.', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'default' => 'yes'
 				),
 		);
@@ -149,10 +147,10 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 	public function admin_options() {
 		?>
 <h3>
-	<?php _e( 'Pago por Servired', 'woocommerce' ); ?>
+	<?php _e( 'Servired Payment', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ); ?>
 </h3>
 <p>
-	<?php _e('Permite el pago por tarjetas Servired.', 'woocommerce' ); ?>
+	<?php _e('Allows Servired card payments.', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ); ?>
 </p>
 <table class="form-table">
 	<?php
@@ -162,6 +160,8 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 </table>
 <!--/.form-table-->
 <?php
+	// footer
+	$this->printFooter();
 	}
 
 	/**
@@ -172,7 +172,7 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 	 */
 	function receipt_page( $order ) {
 
-		echo '<p>'.__( 'Gracias por su pedido, haga click en el botón para pagar por Servired.', 'woocommerce' ).'</p>';
+		echo '<p>'.__( 'Thank you for your order, click on the button to pay for Servired.', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ).'</p>';
 
 		echo $this->generate_servired_light_form( $order );
 
@@ -206,7 +206,7 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 
 		$woocommerce->add_inline_js( '
 				jQuery("body").block({
-				message: "<img src=\"' . esc_url( apply_filters( 'woocommerce_ajax_loader_url', $woocommerce->plugin_url() . '/assets/images/ajax-loader.gif' ) ) . '\" alt=\"Redirecting&hellip;\" style=\"float:left; margin-right: 10px;\" />'.__( 'Thank you for your order. We are now redirecting you to servired to make payment.', 'woocommerce' ).'",
+				message: "<img src=\"' . esc_url( apply_filters( 'woocommerce_ajax_loader_url', $woocommerce->plugin_url() . '/assets/images/ajax-loader.gif' ) ) . '\" alt=\"Redirecting&hellip;\" style=\"float:left; margin-right: 10px;\" />'.__( 'Thank you for your order. We are now redirecting you to servired to make payment.', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ).'",
 				overlayCSS:
 				{
 				background: "#fff",
@@ -227,7 +227,7 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 
 		return '<form action="'.esc_url( $servired_adr ).'" method="post" id="servired_light_payment_form" target="_top">
 								' . implode( '', $servired_args_array) . '
-								<input type="submit" class="button-alt" id="submit_servired_light_payment_form" value="'.__( 'Pay via Servired', 'woocommerce' ).'" /> <a class="button cancel" href="'.esc_url( $order->get_cancel_order_url() ).'">'.__( 'Cancel order &amp; restore cart', 'woocommerce' ).'</a>
+								<input type="submit" class="button-alt" id="submit_servired_light_payment_form" value="'.__( 'Pay via Servired', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ).'" /> <a class="button cancel" href="'.esc_url( $order->get_cancel_order_url() ).'">'.__( 'Cancel order &amp; restore cart', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ).'</a>
 								</form>';
 
 	}
@@ -284,7 +284,7 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 				'Ds_Merchant_MerchantName'			=> $this->merchantName,
 				
 				'Ds_Merchant_Amount'				=> $order->get_total()*100,
-				'Ds_Merchant_ProductDescription'	=> sprintf( __( 'Pedido %s' , 'woocommerce'), $order->get_order_number() ),
+				'Ds_Merchant_ProductDescription'	=> sprintf( __( 'Order %s' , WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ), $order->get_order_number() ),
 				
 				'Ds_Merchant_Order'					=> str_pad($order->id, 12, "0", STR_PAD_LEFT),
 			
@@ -313,6 +313,15 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 			'redirect'	=> add_query_arg('order', $order->id, add_query_arg('key', $order->order_key, get_permalink(woocommerce_get_page_id('pay' ))))
 		);
     }
+    
+    function printFooter() {
+		$output = '<hr>';
+		$output .= '<div style="background-color:#ccc; padding: 20px 10px;">';
+		$output .= '<p>Actualice los estados de los pedidos automáticamente y consiga soporte premium, usando <a href="http://plugintpv.com/plugins/servired-integracion-woocommerce/" target="_blank">Woocommerce Servired PRO</a>';
+		$output .= '</div>';
+		
+		echo $output;
+	}
 
 }
 ?>
