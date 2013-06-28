@@ -258,16 +258,33 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 		-Ds_Merchant_TransactionType: 0
 		*/
 
-		$message =  $order->get_total()*100 .
-					str_pad($order->id, 12, "0", STR_PAD_LEFT) .
-					$this->commerce . 
-					"978" . 
-					$this->key;
+		if ($this->signature == "completa") {
+			$message =  $order->get_total()*100 .
+						str_pad($order->id, 12, "0", STR_PAD_LEFT) .
+						$this->commerce . 
+						"978" . 
+						$this->key;
+			
+			
+			//$amount.$order.$code.$currency.$transactionType.$urlMerchant.$clave;
+			//$message = $importe.$order.$code.$currency.$clave;
+			$signature = strtoupper(sha1($message));
+		} else {
+			
+			// Ampliado 
+			$message =  $order->get_total()*100 .
+			str_pad($order->id, 12, "0", STR_PAD_LEFT) .
+			$this->commerce .
+			"978" .
+			$this->key .
+			"0" .
+			str_replace( 'https:', 'http:', add_query_arg( 'wc-api', 'WC_Gateway_Servired_Light', home_url( '/' ) ) );
+			
+			$signature = strtoupper(sha1($message));
+			
+			//"message = amount + order + merchant_code + currency + transactiontype + merchanturl + Clave_encript;""
+		}
 		
-		
-		//$amount.$order.$code.$currency.$transactionType.$urlMerchant.$clave;
-		//$message = $importe.$order.$code.$currency.$clave;
-		$signature = sha1($message);
 		
 		$args = array (
 				'Ds_Merchant_MerchantCode'			=> "" . $this->commerce,
