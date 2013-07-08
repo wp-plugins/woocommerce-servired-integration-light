@@ -259,35 +259,31 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 		*/
 
 		if ($this->signature == "completa") {
-			$message =  $order->get_total()*100 .
-						str_pad($order->id, 12, "0", STR_PAD_LEFT) .
-						$this->commerce . 
-						"978" . 
-						$this->key;
-			
-			
-			//$amount.$order.$code.$currency.$transactionType.$urlMerchant.$clave;
 			//$message = $importe.$order.$code.$currency.$clave;
-			$signature = strtoupper(sha1($message));
-		} else {
-			
-			// Ampliado 
 			$message =  $order->get_total()*100 .
 			str_pad($order->id, 12, "0", STR_PAD_LEFT) .
 			$this->commerce .
 			"978" .
-			$this->key .
-			"0" .
-			str_replace( 'https:', 'http:', add_query_arg( 'wc-api', 'WC_Gateway_Servired_Light', home_url( '/' ) ) );
-			
+			$this->key;
+				
 			$signature = strtoupper(sha1($message));
-			
-			//"message = amount + order + merchant_code + currency + transactiontype + merchanturl + Clave_encript;""
+		} else {
+			// Ampliado
+			//$amount.$order.$code.$currency.$transactionType.$urlMerchant.$clave;
+		
+			$message =  $order->get_total()*100 .
+			str_pad($order->id, 12, "0", STR_PAD_LEFT) .
+			$this->commerce .
+			"978" .
+			"0" .
+			str_replace( 'https:', 'http:', add_query_arg( 'wc-api', 'WC_Gateway_Servired_Light', home_url( '/' ) ) ) .
+			$this->key;
+				
+			$signature = strtoupper(sha1($message));
 		}
 		
-		
 		$args = array (
-				'Ds_Merchant_MerchantCode'			=> "" . $this->commerce,
+				'Ds_Merchant_MerchantCode'			=> $this->commerce,
 				'Ds_Merchant_Terminal'				=> $this->terminal,
 				'Ds_Merchant_Currency'				=> 978,
 				'Ds_Merchant_MerchantURL'			=> str_replace( 'https:', 'http:', add_query_arg( 'wc-api', 'WC_Gateway_Servired_Light', home_url( '/' ) ) ),
