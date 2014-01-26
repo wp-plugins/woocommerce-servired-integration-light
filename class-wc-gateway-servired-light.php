@@ -243,25 +243,12 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 		global $woocommerce;
 
 		$order_id = $order->id;
-
-		/*
-		-Ds_Merchant_MerchantCode: 999008881
-		-Ds_Merchant_Terminal : 9
-		-Ds_Merchant_ProductDescription: Alfombrilla para raton
-		-Ds_Merchant_Order: 070803113316
-		-Ds_Merchant_Titular: Sermepa
-		-Ds_Merchant_Currency: 978
-		-Ds_Merchant_MerchantURL: https://sis-t.sermepa.es:25443/sis/pruebaCom.jsp
-		-Ds_Merchant_MerchantName: Comercio Pruebas
-		-Ds_Merchant_MerchantSiganture:	ca2bd747d365b4f0a87c670b270cc390b79670ce
-		-Ds_Merchant_Amount: 825
-		-Ds_Merchant_TransactionType: 0
-		*/
-
+		$ds_order = str_pad($order->id, 8, "0", STR_PAD_LEFT) . date('is');
+		
 		if ($this->signature == "completa") {
 			//$message = $importe.$order.$code.$currency.$clave;
 			$message =  $order->get_total()*100 .
-			str_pad($order->id, 12, "0", STR_PAD_LEFT) .
+			$ds_order .
 			$this->commerce .
 			"978" .
 			$this->key;
@@ -272,7 +259,7 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 			//$amount.$order.$code.$currency.$transactionType.$urlMerchant.$clave;
 		
 			$message =  $order->get_total()*100 .
-			str_pad($order->id, 12, "0", STR_PAD_LEFT) .
+			$ds_order .
 			$this->commerce .
 			"978" .
 			"0" .
@@ -290,16 +277,16 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 				'Ds_Merchant_TransactionType'		=> 0,
 				'Ds_Merchant_MerchantSignature'		=> $signature,
 				
-				'Ds_Merchant_UrlOK'					=> get_permalink(woocommerce_get_page_id('thanks')),
+				'Ds_Merchant_UrlOK'					=> $this->get_return_url( $order ),
 				'Ds_Merchant_UrlKO'					=> get_permalink(woocommerce_get_page_id('checkout')),
 				
 				'Ds_Merchant_Titular'				=> $this->titular,
 				'Ds_Merchant_MerchantName'			=> $this->merchantName,
 				
-				'Ds_Merchant_Amount'				=> $order->get_total()*100,
+				'Ds_Merchant_Amount'				=> round($order->get_total()*100),
 				'Ds_Merchant_ProductDescription'	=> sprintf( __( 'Order %s' , WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ), $order->get_order_number() ),
 				
-				'Ds_Merchant_Order'					=> str_pad($order->id, 12, "0", STR_PAD_LEFT),
+				'Ds_Merchant_Order'					=> $ds_order,
 			
 		);
 	

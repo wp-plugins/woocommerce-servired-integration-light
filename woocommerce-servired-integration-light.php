@@ -25,7 +25,7 @@
  * Description: Pago por tarjeta servired para Woocommerce. Versión Light.
  * Author: PluginTPV
  * Author URI: http://www.plugintpv.com
- * Version: 1.3
+ * Version: 1.3.1
  */
 
 if ( !defined( 'WOOCOMMERCE_SERVIRED_LIGHT_URL' ) ) {
@@ -61,7 +61,8 @@ function servired_light_ipn_response () {
 	
 	if ($datos['Ds_Response']=='0000') {  // Operacion correcta
 	
-		$order_id = ( $datos['Ds_Order'] );
+		$ds_order = ( $datos['Ds_Order'] );
+		$order_id = substr($ds_order,0,8);
 		
 		$order = new WC_Order( $order_id );
 		
