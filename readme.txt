@@ -45,6 +45,10 @@ En la pestaña de "Pasarelas de Pago"
 
 == Changelog ==
 
+= 1.3.1 =
+* Corregido error Pedido Duplicado
+* Al terminar transacción correctamente muestra resumen del pedido.
+
 = 1.3 =
 * Corregido error específico La Caixa.
 
