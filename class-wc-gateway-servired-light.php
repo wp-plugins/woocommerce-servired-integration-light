@@ -46,6 +46,8 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 		$this->terminal 		= $this->get_option( 'terminal' );
 		$this->key 				= $this->get_option( 'key' );
 
+		$this->url				= $this->get_option( 'url' );
+		
 		$this->signature 		= $this->get_option( 'signature' );
 		$this->test 			= $this->get_option( 'test' );
 
@@ -126,6 +128,16 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 						'description' => '',
 						'default' => 'ampliada'
 				),
+				'url' => array(
+						'title' => __( 'Url', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
+						'type'	=> 'select',
+						'options' => array(
+								'sermepa' => __( 'Sermepa', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
+								'redsys' => __( 'RedSys', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN )
+						),
+						'description' => '',
+						'default' => 'sermepa'
+				),
 				'test' => array(
 						'title' => __( 'Test Mode', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ),
 						'type' => 'checkbox',
@@ -190,11 +202,17 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 
 		$order = new WC_Order( $order_id );
 
-		if ( $this->test == 'yes' ):
-		$servired_adr = 'https://sis-t.sermepa.es:25443/sis/realizarPago';
-		else :
-		$servired_adr = 'https://sis.sermepa.es/sis/realizarPago';
-		endif;
+		if ( $this->test == 'yes' ) {
+			$servired_adr = 'https://sis-t.sermepa.es:25443/sis/realizarPago';
+			if ( $this->url == "redsys" ) {
+				$servired_adr = 'https://sis-t.redsys.es:25443/sis/realizarPago';
+			}
+		} else {
+			$servired_adr = 'https://sis.sermepa.es/sis/realizarPago';
+			if ( $this->url == "redsys" ) {
+				$servired_adr = 'https://sis.redsys.es/sis/realizarPago';
+			}
+		}
 
 		$servired_args = $this->get_servired_light_args( $order );
 

@@ -4,7 +4,7 @@ Donate link: http://www.plugintpv.com/
 Tags: woocommerce, servired, credit card, martercard, visa
 Requires at least: 3.2
 Tested up to: 3.4
-Stable tag: 1.3.1
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,10 @@ En la pestaña de "Pasarelas de Pago"
 
 == Changelog ==
 
+= 1.4 =
+* Añadida selección entre url de Sermepa o RedSys.
+* Comprobada compatibilidad con Wordpress hasta 3.9
+* Comprobada compatibilidad con Woocommerce hasta 2.1.8
 = 1.3.1 =
 * Corregido error Pedido Duplicado
 * Al terminar transacción correctamente muestra resumen del pedido.
