@@ -25,7 +25,7 @@
  * Description: Pago por tarjeta servired para Woocommerce. Versión Light.
  * Author: PluginTPV
  * Author URI: http://www.plugintpv.com
- * Version: 1.3.1
+ * Version: 1.4
  */
 
 if ( !defined( 'WOOCOMMERCE_SERVIRED_LIGHT_URL' ) ) {
