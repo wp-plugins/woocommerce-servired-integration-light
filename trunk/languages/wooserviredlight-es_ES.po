@@ -1,0 +1,158 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-17 09:00+0100\n"
+"PO-Revision-Date: 2015-02-17 09:01+0100\n"
+"Last-Translator: eggemplo <eggemplo@gmail.com>\n"
+"Language-Team: PluginTPV <info@plugintpv.com>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../class-wc-gateway-servired-light.php:35
+#: ../class-wc-gateway-servired-light.php:86
+msgid "Servired Light"
+msgstr "Servired Light"
+
+#: ../class-wc-gateway-servired-light.php:77
+msgid "Enable/Disable"
+msgstr "Activar/Desactivar"
+
+#: ../class-wc-gateway-servired-light.php:79
+msgid "Enable Servired Light"
+msgstr "Activar Servired Light"
+
+#: ../class-wc-gateway-servired-light.php:83
+msgid "Title"
+msgstr "Título"
+
+#: ../class-wc-gateway-servired-light.php:85
+msgid "This  title is showed in checkout process."
+msgstr "Texto mostrado en el proceso de pago."
+
+#: ../class-wc-gateway-servired-light.php:90
+msgid "Description"
+msgstr "Descripción"
+
+#: ../class-wc-gateway-servired-light.php:92
+msgid ""
+"Description of the method of payment. Use it to tell the user that it is a "
+"secure system through bank."
+msgstr ""
+"Descripción del método de pago. Úselo para indicar a los usuarios que se "
+"usará una pasarela de pago bancario segura."
+
+#: ../class-wc-gateway-servired-light.php:93
+msgid ""
+"Secure payment by credit card. You will be redirected to the secure website "
+"of the bank."
+msgstr ""
+"Pago seguro con tarjeta de crédito. Será redireccionado a la entidad "
+"bancaria."
+
+#: ../class-wc-gateway-servired-light.php:96
+msgid "Titular"
+msgstr "Titular"
+
+#: ../class-wc-gateway-servired-light.php:101
+msgid "Trade name"
+msgstr "Nombre de comercio"
+
+#: ../class-wc-gateway-servired-light.php:106
+msgid "Trade number"
+msgstr "Número de comercio"
+
+#: ../class-wc-gateway-servired-light.php:111
+msgid "Terminal number"
+msgstr "Número de terminal"
+
+#: ../class-wc-gateway-servired-light.php:116
+msgid "Secret key"
+msgstr "Clave secreta"
+
+#: ../class-wc-gateway-servired-light.php:118
+msgid "Encryptation Secret Key."
+msgstr "Clave secreta de encriptación."
+
+#: ../class-wc-gateway-servired-light.php:122
+msgid "Sort Code"
+msgstr "Código"
+
+#: ../class-wc-gateway-servired-light.php:125
+msgid "Complet"
+msgstr "Completa"
+
+#: ../class-wc-gateway-servired-light.php:126
+msgid "SHA1 - Complet Extended"
+msgstr "SHA1 - Completa extendida"
+
+#: ../class-wc-gateway-servired-light.php:132
+msgid "Url"
+msgstr "Url"
+
+#: ../class-wc-gateway-servired-light.php:135
+msgid "Sermepa"
+msgstr "Sermepa"
+
+#: ../class-wc-gateway-servired-light.php:136
+msgid "RedSys"
+msgstr "RedSys"
+
+#: ../class-wc-gateway-servired-light.php:142
+msgid "Test Mode"
+msgstr "Mode pruebas"
+
+#: ../class-wc-gateway-servired-light.php:144
+msgid "Enable Servired test mode."
+msgstr "Activar modo pruebas."
+
+#: ../class-wc-gateway-servired-light.php:162
+msgid "Servired Payment"
+msgstr "Pago con Servired"
+
+#: ../class-wc-gateway-servired-light.php:165
+msgid "Allows Servired card payments."
+msgstr "Permite el pago con tarjetas de cŕedito."
+
+#: ../class-wc-gateway-servired-light.php:187
+msgid "Thank you for your order, click on the button to pay for Servired."
+msgstr "Gracias por su pedido, haga click en el botón para proceder al pago."
+
+#: ../class-wc-gateway-servired-light.php:228
+#: ../class-wc-gateway-servired-light.php:249
+msgid ""
+"Thank you for your order. We are now redirecting you to servired to make "
+"payment."
+msgstr ""
+"Gracias por su pedido. Le redireccionaremos a la web segura de la entidad "
+"bancaria."
+
+#: ../class-wc-gateway-servired-light.php:271
+msgid "Pay via Servired"
+msgstr "Pagar con Servired"
+
+#: ../class-wc-gateway-servired-light.php:271
+msgid "Cancel order &amp; restore cart"
+msgstr "Cancelar pedido &amp; restaurar carro"
+
+#: ../class-wc-gateway-servired-light.php:328
+#, php-format
+msgid "Order %s"
+msgstr "Pedido %s"
+
+#: ../woocommerce-servired-integration-light.php:74
+#, php-format
+msgid "Servired order completed, code %s"
+msgstr "Servired pedido completado, código %s"
+
+#: ../woocommerce-servired-integration-light.php:81
+#, php-format
+msgid "Servired Payment ERROR, code %s"
+msgstr "Servired ERROR de pago, código %s"
