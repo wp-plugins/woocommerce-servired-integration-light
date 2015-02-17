@@ -2,19 +2,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-04 16:08+0100\n"
-"PO-Revision-Date: 2014-05-04 16:09+0100\n"
+"POT-Creation-Date: 2015-02-17 09:00+0100\n"
+"PO-Revision-Date: 2015-02-17 09:01+0100\n"
 "Last-Translator: eggemplo <eggemplo@gmail.com>\n"
 "Language-Team: PluginTPV <info@plugintpv.com>\n"
-"Language: \n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Language: Spanish\n"
-"X-Poedit-Country: SPAIN\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../class-wc-gateway-servired-light.php:35
@@ -43,12 +42,20 @@ msgid "Description"
 msgstr "Descripción"
 
 #: ../class-wc-gateway-servired-light.php:92
-msgid "Description of the method of payment. Use it to tell the user that it is a secure system through bank."
-msgstr "Descripción del método de pago. Úselo para indicar a los usuarios que se usará una pasarela de pago bancario segura."
+msgid ""
+"Description of the method of payment. Use it to tell the user that it is a "
+"secure system through bank."
+msgstr ""
+"Descripción del método de pago. Úselo para indicar a los usuarios que se "
+"usará una pasarela de pago bancario segura."
 
 #: ../class-wc-gateway-servired-light.php:93
-msgid "Secure payment by credit card. You will be redirected to the secure website of the bank."
-msgstr "Pago seguro con tarjeta de crédito. Será redireccionado a la entidad bancaria."
+msgid ""
+"Secure payment by credit card. You will be redirected to the secure website "
+"of the bank."
+msgstr ""
+"Pago seguro con tarjeta de crédito. Será redireccionado a la entidad "
+"bancaria."
 
 #: ../class-wc-gateway-servired-light.php:96
 msgid "Titular"
@@ -118,19 +125,24 @@ msgstr "Permite el pago con tarjetas de cŕedito."
 msgid "Thank you for your order, click on the button to pay for Servired."
 msgstr "Gracias por su pedido, haga click en el botón para proceder al pago."
 
-#: ../class-wc-gateway-servired-light.php:227
-msgid "Thank you for your order. We are now redirecting you to servired to make payment."
-msgstr "Gracias por su pedido. Le redireccionaremos a la web segura de la entidad bancaria."
+#: ../class-wc-gateway-servired-light.php:228
+#: ../class-wc-gateway-servired-light.php:249
+msgid ""
+"Thank you for your order. We are now redirecting you to servired to make "
+"payment."
+msgstr ""
+"Gracias por su pedido. Le redireccionaremos a la web segura de la entidad "
+"bancaria."
 
-#: ../class-wc-gateway-servired-light.php:248
+#: ../class-wc-gateway-servired-light.php:271
 msgid "Pay via Servired"
 msgstr "Pagar con Servired"
 
-#: ../class-wc-gateway-servired-light.php:248
+#: ../class-wc-gateway-servired-light.php:271
 msgid "Cancel order &amp; restore cart"
 msgstr "Cancelar pedido &amp; restaurar carro"
 
-#: ../class-wc-gateway-servired-light.php:305
+#: ../class-wc-gateway-servired-light.php:328
 #, php-format
 msgid "Order %s"
 msgstr "Pedido %s"
@@ -144,4 +156,3 @@ msgstr "Servired pedido completado, código %s"
 #, php-format
 msgid "Servired Payment ERROR, code %s"
 msgstr "Servired ERROR de pago, código %s"
-
