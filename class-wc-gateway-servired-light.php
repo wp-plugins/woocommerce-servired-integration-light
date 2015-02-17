@@ -39,9 +39,9 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 		$this->init_settings();
 
 		// Define user set variables
-		$this->title 			= $this->get_option( 'title' );
-		$this->description      = $this->get_option( 'description' );
-
+		$this->title 			= apply_filters( 'wooservired_light_title', $this->get_option( 'title' ) );
+		$this->description      = apply_filters( 'wooservired_light_description', $this->get_option( 'description' ) );
+		
 		$this->commerce 		= $this->get_option( 'commerce' );
 		$this->terminal 		= $this->get_option( 'terminal' );
 		$this->key 				= $this->get_option( 'key' );
@@ -222,31 +222,54 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 			$servired_args_array[] = '<input type="hidden" name="'.esc_attr( $key ).'" value="'.esc_attr( $value ).'" />';
 		}
 
-		$woocommerce->add_inline_js( '
+		if ( method_exists( $woocommerce, 'add_inline_js' ) ) {
+			$woocommerce->add_inline_js( '
 				jQuery("body").block({
-				message: "<img src=\"' . esc_url( apply_filters( 'woocommerce_ajax_loader_url', $woocommerce->plugin_url() . '/assets/images/ajax-loader.gif' ) ) . '\" alt=\"Redirecting&hellip;\" style=\"float:left; margin-right: 10px;\" />'.__( 'Thank you for your order. We are now redirecting you to servired to make payment.', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ).'",
-				overlayCSS:
-				{
-				background: "#fff",
-				opacity: 0.6
-	},
-				css: {
-				padding:        20,
-				textAlign:      "center",
-				color:          "#555",
-				border:         "3px solid #aaa",
-				backgroundColor:"#fff",
-				cursor:         "wait",
-				lineHeight:		"32px"
-	}
-	});
+					message: "<img src=\"' . esc_url( apply_filters( 'woocommerce_ajax_loader_url', $woocommerce->plugin_url() . '/assets/images/ajax-loader.gif' ) ) . '\" alt=\"Redirecting&hellip;\" style=\"float:left; margin-right: 10px;\" />'.__( 'Thank you for your order. We are now redirecting you to servired to make payment.', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ).'",
+					overlayCSS:
+					{
+						background: "#fff",
+						opacity: 0.6
+					},
+					css: {
+						padding:        20,
+						textAlign:      "center",
+						color:          "#555",
+						border:         "3px solid #aaa",
+						backgroundColor:"#fff",
+						cursor:         "wait",
+						lineHeight:		"32px"
+					}
+				});
 				jQuery("#submit_servired_light_payment_form").click();
-				' );
+			' );
+		} else {
+			wc_enqueue_js( '
+				jQuery("body").block({
+					message: "<img src=\"' . esc_url( apply_filters( 'woocommerce_ajax_loader_url', $woocommerce->plugin_url() . '/assets/images/ajax-loader.gif' ) ) . '\" alt=\"Redirecting&hellip;\" style=\"float:left; margin-right: 10px;\" />'.__( 'Thank you for your order. We are now redirecting you to servired to make payment.', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ).'",
+					overlayCSS:
+					{
+						background: "#fff",
+						opacity: 0.6
+					},
+					css: {
+						padding:        20,
+						textAlign:      "center",
+						color:          "#555",
+						border:         "3px solid #aaa",
+						backgroundColor:"#fff",
+						cursor:         "wait",
+						lineHeight:		"32px"
+					}
+				});
+				jQuery("#submit_servired_light_payment_form").click();
+			' );
+	 	}
 
 		return '<form action="'.esc_url( $servired_adr ).'" method="post" id="servired_light_payment_form" target="_top">
-								' . implode( '', $servired_args_array) . '
-								<input type="submit" class="button-alt" id="submit_servired_light_payment_form" value="'.__( 'Pay via Servired', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ).'" /> <a class="button cancel" href="'.esc_url( $order->get_cancel_order_url() ).'">'.__( 'Cancel order &amp; restore cart', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ).'</a>
-								</form>';
+			' . implode( '', $servired_args_array) . '
+			<input type="submit" class="button-alt" id="submit_servired_light_payment_form" value="'.__( 'Pay via Servired', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ).'" /> <a class="button cancel" href="'.esc_url( $order->get_cancel_order_url() ).'">'.__( 'Cancel order &amp; restore cart', WOOCOMMERCE_SERVIRED_LIGHT_DOMAIN ).'</a>
+			</form>';
 
 	}
 
@@ -281,7 +304,7 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 			$this->commerce .
 			"978" .
 			"0" .
-			str_replace( 'https:', 'http:', add_query_arg( 'wc-api', 'WC_Gateway_Servired_Light', home_url( '/' ) ) ) .
+			add_query_arg( 'wc-api', 'WC_Gateway_Servired_Light', home_url( '/' ) ) .
 			$this->key;
 				
 			$signature = strtoupper(sha1($message));
@@ -291,13 +314,13 @@ class WC_Gateway_Servired_Light extends WC_Payment_Gateway {
 				'Ds_Merchant_MerchantCode'			=> $this->commerce,
 				'Ds_Merchant_Terminal'				=> $this->terminal,
 				'Ds_Merchant_Currency'				=> 978,
-				'Ds_Merchant_MerchantURL'			=> str_replace( 'https:', 'http:', add_query_arg( 'wc-api', 'WC_Gateway_Servired_Light', home_url( '/' ) ) ),
+				'Ds_Merchant_MerchantURL'			=> add_query_arg( 'wc-api', 'WC_Gateway_Servired_Light', home_url( '/' ) ),
 				'Ds_Merchant_TransactionType'		=> 0,
 				'Ds_Merchant_MerchantSignature'		=> $signature,
 				
-				'Ds_Merchant_UrlOK'					=> $this->get_return_url( $order ),
-				'Ds_Merchant_UrlKO'					=> get_permalink(woocommerce_get_page_id('checkout')),
-				
+				'Ds_Merchant_UrlKO'					=> apply_filters( 'wooservired_light_param_urlKO', get_permalink( woocommerce_get_page_id( 'checkout' ) ) ),
+				'Ds_Merchant_UrlOK'					=> apply_filters( 'wooservired_light_param_urlOK', $this->get_return_url( $order ) ),
+
 				'Ds_Merchant_Titular'				=> $this->titular,
 				'Ds_Merchant_MerchantName'			=> $this->merchantName,
 				
